@@ -24,49 +24,60 @@
         .mobile-menu {
             position: fixed; /* Stay in place when scrolled */
             top: 0;
-            left: 0;
-            width: 100%;
+            right: 0; /* Align to the right */
+            width: 60%; /* Adjust width as needed */
             height: 100%;
             background-color: rgba(0, 0, 0, 0.9); /* Dark semi-transparent background */
             color: white;
             z-index: 60; /* Higher than the navbar */
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
+            align-items: flex-start; /* Align items to the left */
+            padding-top: 60px; /* Space for the close button */
             opacity: 0;
             visibility: hidden;
-            transition: opacity 0.3s ease, visibility 0.3s ease;
+            transition: opacity 0.3s ease, visibility 0.3s ease, right 0.3s ease; /* Transition for the right property */
+            transform: translateX(100%); /* Initially off-screen to the right */
         }
 
         .mobile-menu.open {
             opacity: 1;
             visibility: visible;
+            transform: translateX(0%); /* Slide in from the right */
         }
 
         .mobile-menu ul {
             list-style: none;
-            padding: 0;
-            text-align: center;
+            padding: 0 20px; /* Add some left padding */
+            width: 100%;
         }
 
         .mobile-menu ul li {
             margin-bottom: 20px;
+            width: 100%;
         }
 
         .mobile-menu ul li a {
             color: white;
             text-decoration: none;
-            font-size: 1.5rem;
+            font-size: 1.2rem; /* Adjust font size as needed */
+            display: block; /* Make links full width for easier tapping */
+            padding: 10px 0; /* Add some vertical padding */
         }
 
         .mobile-menu .close-button {
             position: absolute;
-            top: 20px;
-            right: 30px;
+            top: 15px;
+            left: 20px; /* Adjust position of the close button */
             font-size: 2rem;
             color: white;
             cursor: pointer;
+        }
+
+        /* Adjust the hamburger menu position */
+        .nav-right {
+            display: flex;
+            align-items: center;
         }
     </style>
 </head>
@@ -86,7 +97,7 @@
                 <li><a href="#careers" class="text-white hover:underline">Careers</a></li>
                 <li><a href="#contact" class="text-white hover:underline">Contact</a></li>
             </div>
-            <div class="md:hidden">
+            <div class="md:hidden nav-right">
                 <button id="hamburger-menu" class="text-white focus:outline-none">
                     <i class="fas fa-bars fa-lg"></i>
                 </button>
